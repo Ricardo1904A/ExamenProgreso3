@@ -26,4 +26,23 @@ void G_estudiante(Estudiante estudiante, int numero)
 
     fclose(archivo);
 }
+void C_estudiante()
+{
+    FILE *archivo;
+    archivo = fopen("estudiantes.txt", "r");
+    if (archivo == NULL)
+    {
+        printf("No se pudo abrir el archivo.\n");
+        return;
+    }
 
+    Estudiante estudiante;
+    int numero = 1;
+    while (fscanf(archivo, "%*[^;];%[^;];%[^;];%f;%f;%f\n", estudiante.nombre, estudiante.materia, &estudiante.nota1, &estudiante.nota2, &estudiante.nota3) == 5)
+    {
+        printf("%d;%s;%s;%.2f;%.2f;%.2f\n", numero, estudiante.nombre, estudiante.materia, estudiante.nota1, estudiante.nota2, estudiante.nota3);
+        numero++;
+    }
+
+    fclose(archivo);
+}
